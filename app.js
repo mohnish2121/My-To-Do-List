@@ -12,6 +12,7 @@ const select = document.getElementById("select-all");
 select.addEventListener("click", filterTodo);
 
 function addNewTask(event){
+    event.preventDefault();
     if(event.key === "Enter" && inputbox.value){
         const div = document.createElement("div");
         div.classList.add("newtask");
@@ -48,23 +49,28 @@ function addNewTask(event){
             checkbutton[i].addEventListener("click", checktask);
             trashbutton[i].addEventListener("click", removeTask);
         }
+        changeProgressBar();
     }
 }
 
 
 function removeTask(event) {
+    event.preventDefault();
     const parentdiv = event.target.parentElement;
     parentdiv.classList.add("fall");
     removeFromLocal(parentdiv);
     parentdiv.addEventListener("transitionend",()=>{
         parentdiv.remove();
+        changeProgressBar();
     })
+
     
 }
 function checktask(event){
     const parentdiv = event.target.parentElement;
     parentdiv.classList.toggle("completed");
     markCompleteClassInLocal(parentdiv);
+    changeProgressBar();
 }
 function markCompleteClassInLocal(parentdiv){
     let todos = JSON.parse(localStorage.getItem('todos'));
@@ -80,6 +86,7 @@ function markCompleteClassInLocal(parentdiv){
         
 }
 function filterTodo(event) {
+    event.preventDefault();
     let option = event.target.value;
     let div = document.getElementsByClassName("newtask");
     for(let item of div){
@@ -165,7 +172,9 @@ function RenderTodoFromLocalOnLoad(){
             checkbutton[i].addEventListener("click", checktask);
             trashbutton[i].addEventListener("click", removeTask);
         }
+        
     });
+    changeProgressBar();
 }
 
 // remove todo from local on clicking trash button
@@ -175,11 +184,41 @@ function removeFromLocal(todo){
     let todos = JSON.parse(localStorage.getItem('todos'));
     let index;
     for(let i = 0;i<todos.length;i++){
-        if(todos[i] === todo){
+        if(Object.keys(todos[i])[0] === textToDelete){
             index = i;
             break;
         }
     }
     todos.splice(index,1);
     localStorage.setItem('todos',JSON.stringify(todos));
+}
+
+/* change progress bar with the task */
+function changeProgressBar(){
+    let N = document.getElementsByClassName("newtask");
+    let n = document.getElementsByClassName("completed");
+    let prog ;
+   
+    if(N.length == 0) prog = 0;
+    else prog= Math.floor((n.length/N.length)*100);
+
+    const taskbar = document.getElementById("taskbar");
+    taskbar.style.width = `${prog}%`;
+
+    if(prog <= 30) {
+        taskbar.classList.remove("bg-warning");
+        taskbar.classList.remove("bg-success");
+        taskbar.classList.add("bg-danger");
+    }
+    else if(prog <= 60){
+        taskbar.classList.remove("bg-success");
+        taskbar.classList.remove("bg-danger");
+        taskbar.classList.add("bg-warning");
+    }
+    else{
+        taskbar.classList.remove("bg-danger");
+        taskbar.classList.remove("bg-warning");
+        taskbar.classList.add("bg-success");
+    }
+    taskbar.innerHTML = `${prog}%`;
 }

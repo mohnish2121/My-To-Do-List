@@ -2,6 +2,7 @@ body{
     background: #003973;  
     background: -webkit-linear-gradient(to right, #E5E5BE, #003973); 
     background: linear-gradient(to right, #E5E5BE, #003973); 
+    
     padding:0;
     margin:0;
     box-sizing: border-box;
@@ -48,12 +49,16 @@ body{
     border-radius:3px;
     margin:0 1rem;
     margin-bottom:1rem;
-    transition : all 0.5s ease;
+    transition : all 0.7s ease;
+    
+}
+.newtask:hover{
+    transform: scale(1.06);
 }
 /* transition class to fall div */
 .fall {
-    transform : translateY(8rem) rotateZ(20deg);
-    opacity:0;
+    transform : translateY(16rem) rotateZ(20deg) !important;
+    opacity:0 !important;
 }
 
 /* progress bar */
@@ -140,3 +145,28 @@ select {
     background-color: aqua;
 }
 
+/* footer */
+#footer{
+    background-color: black;
+    color:white;
+    width:100%;
+    position:fixed;
+    bottom:0;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    height:3rem;
+    flex-wrap: wrap;
+}
+#footer-left{
+    padding:0 0.8rem;
+    margin:0;
+    
+}
+#footer-right{
+    padding:0 0.8rem;
+    margin:0;
+}
+.fa-heart{
+    color:red;
+}
