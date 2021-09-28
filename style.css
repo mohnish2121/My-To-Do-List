@@ -50,6 +50,7 @@ body{
     margin:0 1rem;
     margin-bottom:1rem;
     transition : all 0.7s ease;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     
 }
 .newtask:hover{
