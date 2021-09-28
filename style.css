@@ -1,0 +1,142 @@
+body{
+    background: #003973;  
+    background: -webkit-linear-gradient(to right, #E5E5BE, #003973); 
+    background: linear-gradient(to right, #E5E5BE, #003973); 
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    font-family: 'Gluten', cursive;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    
+}
+#todo-input-form{
+    min-width: 570px;
+    margin:3rem 0 3rem 1rem;
+    display:flex;
+    align-items: center;
+    
+}
+#todo-input{
+    font-family: 'Gluten', cursive;
+    width:90% ;
+    height:2rem;
+    padding: 0 1rem 0 1rem;
+    font-size: larger;
+
+}
+
+
+
+#plus-icon{
+    position:relative;
+    right:2rem;
+}
+
+/* task added  */
+/* task div  */
+.newtask{
+    background-color: white;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width:550px;
+    height:2rem;
+    border :1px solid black;
+    border-radius:3px;
+    margin:0 1rem;
+    margin-bottom:1rem;
+    transition : all 0.5s ease;
+}
+/* transition class to fall div */
+.fall {
+    transform : translateY(8rem) rotateZ(20deg);
+    opacity:0;
+}
+
+/* progress bar */
+.progress{
+    width:550px;
+    margin-bottom:2rem;
+    height:1.5rem;
+}
+@media (max-width: 570px) {    
+    #todo-input-form {
+        width:90vw;
+        min-width: auto;
+    }
+    .newtask{
+        width:85vw;
+        min-width: auto;
+    }
+    .progress{
+        width:85vw;
+        min-width: auto;
+    }
+}
+/* task para  */
+.task-text{
+    flex:1;
+    padding:0 1rem;
+    margin:0;
+}
+.fa-check, .fa-trash{
+    padding:0.5rem;
+    cursor: pointer;
+
+}
+/* task :checked */
+.fa-check{
+    background-color:green;
+    color:white;
+}
+/* task .fa-trash */
+.fa-trash{
+    background-color: red;
+    color:white;
+    
+}
+
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+
+/* dropdown */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline:none;
+    border:none;
+    width:10rem;
+    font-family:  'Gluten', cursive;
+    cursor:pointer;
+    padding:0.1rem;
+
+}
+
+.select{
+    position:relative;
+    overflow:hidden;
+}
+.select::after{
+    content: "\25BC";
+    position:absolute;
+    background-color: aqua;
+    top:0;
+    right:0;
+    padding:0.3rem;
+    pointer-events: none;
+    transition : all 0.2s ease;
+}
+.select:hover::after{
+    background-color: white;
+    
+}
+#select-all * {
+    background-color: aqua;
+}
+
