@@ -1,5 +1,6 @@
 # ToDo List
-[click here](https://mohnish2121.github.io/My-To-Do-List/)
+<!-- [click here](https://mohnish2121.github.io/My-To-Do-List/) -->
+### https://mohnish2121.github.io/My-To-Do-List/
 ## How to use 
 - Clicking on the link provided will take you to a web page. There is it a todo list .
 - You can just add task you want to do in future in input box and hitting enter will add it to your todo list .
